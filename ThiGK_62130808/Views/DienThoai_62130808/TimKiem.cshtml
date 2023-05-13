@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ThiGK_62130808.Models.DienThoai>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "TenDT", rowsPerPage: 2);
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js")
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div id="gridContent">
+    @ViewBag.TB
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-hover",
+        footerStyle: "grid-footer",
+        fillEmptyRows: true,
+        mode: WebGridPagerModes.Numeric,
+        alternatingRowStyle: "alternatingRowStyle",
+        columns: new[]  // colums in grid
+        {
+            grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+            grid.Column("MaDT","Mã ĐT"), //the model fields to display
+            grid.Column("TenDT","Tên ĐT"  ),
+            grid.Column("XuatXu","Xuất xứ",format: (@item) => @item.XuatXu==true?"Trong nước":"Ngoại nhập"),
+            grid.Column("DonGia","Đơn giá",format:@<text> @item.DonGia.ToString("dd/MM/yyyy")</text>),
+grid.Column("AnhDT","Ảnh đại diện"@*format:@<text> @item.Luong.ToString("#,##0")</text>*@),
+grid.Column("MoTa","Mô tả"),
+grid.Column("PhuKienKemTheo","Phụ kiện kèm theo"),
+grid.Column("LoaiDienThoai.TenLDT","Loại điện thoại"),
+/*grid.Column(format: (item) => Html.ActionLink("Cập nhật", "Edit", "SinhVien0720_62130808",new { id = item.MaSV },"SinhVien0720_62130808Controller")),
+grid.Column(format: (item) => Html.ActionLink("Xem chi tiết", "Details","SinhVien0720_62130808", new { id = item.MaSV },"SinhVien0720_62130808Controller")),
+grid.Column(format: (item) => Html.ActionLink("Xóa", "Delete","SinhVien0720_62130808", new { id = item.MaSV },"SinhVien0720_62130808Controller")),*/
+grid.Column("Chức năng", format: @<text>
+    <a href="@Url.Action("Edit", new { id = item.MaDT})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/edit.png" width="20" height="20" /></abbr></a>
+    <a href="@Url.Action("Details", new { id = item.MaDT})" class="edit-btn"><abbr title="Xem chi tiết"><img src="/images/details.png" width="20" height="20" /></abbr></a>
+    <a href="@Url.Action("Delete", new { id = item.MaDT})" class="edit-btn"><abbr title="Xóa dữ liệu"><img src="/images/delete.png" width="20" height="20" /></abbr></a>
+</text>
+),
+}
+)
+</div>

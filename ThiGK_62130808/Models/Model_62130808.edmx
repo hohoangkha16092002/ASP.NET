@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ThiGK_62130808Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DienThoai">
+          <Key>
+            <PropertyRef Name="MaDT" />
+          </Key>
+          <Property Name="MaDT" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenDT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="XuatXu" Type="bit" />
+          <Property Name="DonGia" Type="int" />
+          <Property Name="AnhDT" Type="nvarchar" MaxLength="50" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhuKienKemTheo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaLDT" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoaiDienThoai">
+          <Key>
+            <PropertyRef Name="MaLDT" />
+          </Key>
+          <Property Name="MaLDT" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenLDT" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__DienThoai__MaLDT__3A81B327">
+          <End Role="LoaiDienThoai" Type="Self.LoaiDienThoai" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DienThoai" Type="Self.DienThoai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiDienThoai">
+              <PropertyRef Name="MaLDT" />
+            </Principal>
+            <Dependent Role="DienThoai">
+              <PropertyRef Name="MaLDT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DienThoai_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TenDT" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ThiGK_62130808ModelStoreContainer">
+          <EntitySet Name="DienThoai" EntityType="Self.DienThoai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiDienThoai" EntityType="Self.LoaiDienThoai" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DienThoai__MaLDT__3A81B327" Association="Self.FK__DienThoai__MaLDT__3A81B327">
+            <End Role="LoaiDienThoai" EntitySet="LoaiDienThoai" />
+            <End Role="DienThoai" EntitySet="DienThoai" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ThiGK_62130808Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DienThoai">
+          <Key>
+            <PropertyRef Name="MaDT" />
+          </Key>
+          <Property Name="MaDT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="XuatXu" Type="Boolean" />
+          <Property Name="DonGia" Type="Int32" />
+          <Property Name="AnhDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhuKienKemTheo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaLDT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LoaiDienThoai" Relationship="Self.FK__DienThoai__MaLDT__3A81B327" FromRole="DienThoai" ToRole="LoaiDienThoai" />
+        </EntityType>
+        <EntityType Name="LoaiDienThoai">
+          <Key>
+            <PropertyRef Name="MaLDT" />
+          </Key>
+          <Property Name="MaLDT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenLDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DienThoais" Relationship="Self.FK__DienThoai__MaLDT__3A81B327" FromRole="LoaiDienThoai" ToRole="DienThoai" />
+        </EntityType>
+        <Association Name="FK__DienThoai__MaLDT__3A81B327">
+          <End Role="LoaiDienThoai" Type="Self.LoaiDienThoai" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DienThoai" Type="Self.DienThoai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiDienThoai">
+              <PropertyRef Name="MaLDT" />
+            </Principal>
+            <Dependent Role="DienThoai">
+              <PropertyRef Name="MaLDT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ThiGK_62130808Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DienThoais" EntityType="Self.DienThoai" />
+          <EntitySet Name="LoaiDienThoais" EntityType="Self.LoaiDienThoai" />
+          <AssociationSet Name="FK__DienThoai__MaLDT__3A81B327" Association="Self.FK__DienThoai__MaLDT__3A81B327">
+            <End Role="LoaiDienThoai" EntitySet="LoaiDienThoais" />
+            <End Role="DienThoai" EntitySet="DienThoais" />
+          </AssociationSet>
+          <FunctionImport Name="DienThoai_TimKiem">
+            <Parameter Name="TenDT" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ThiGK_62130808ModelStoreContainer" CdmEntityContainer="ThiGK_62130808Entities">
+          <EntitySetMapping Name="DienThoais">
+            <EntityTypeMapping TypeName="ThiGK_62130808Model.DienThoai">
+              <MappingFragment StoreEntitySet="DienThoai">
+                <ScalarProperty Name="MaDT" ColumnName="MaDT" />
+                <ScalarProperty Name="TenDT" ColumnName="TenDT" />
+                <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="AnhDT" ColumnName="AnhDT" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="PhuKienKemTheo" ColumnName="PhuKienKemTheo" />
+                <ScalarProperty Name="MaLDT" ColumnName="MaLDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiDienThoais">
+            <EntityTypeMapping TypeName="ThiGK_62130808Model.LoaiDienThoai">
+              <MappingFragment StoreEntitySet="LoaiDienThoai">
+                <ScalarProperty Name="MaLDT" ColumnName="MaLDT" />
+                <ScalarProperty Name="TenLDT" ColumnName="TenLDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DienThoai_TimKiem" FunctionName="ThiGK_62130808Model.Store.DienThoai_TimKiem" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

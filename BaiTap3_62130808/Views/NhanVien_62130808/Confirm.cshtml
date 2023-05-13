@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Confirm";
+}
+<h3 style="text-align: center;">THÔNG TIN NHÂN VIÊN ĐÃ ĐĂNG KÝ</h3>
+<div style="display:flex; padding:10px; align-items:center; justify-content: center;">
+    <img src="@ViewBag.Avatar" height="150px" width="150px" style="border-radius: 50%;" />
+    <div style="font-size:20px; margin-left:40px">
+        Mã nhân viên:  @ViewBag.EmpID <br />
+        Họ tên: @ViewBag.Name <br />
+        Ngày sinh: @ViewBag.BirthOfDate <br />
+        Email: @ViewBag.Email <br />
+        Mật khẩu: @ViewBag.Password <br />
+        Phòng ban: @ViewBag.Department <br />
+        @Html.ActionLink("Quay lại", "Index")
+    </div>
+</div>
+
+@*<table>
+    <tr>
+        <td></td>
+        <td>
+            <tr>
+                <td>
+                    Mã nhân viên:
+                </td>
+                <td>
+                    @ViewBag.EmpID
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Họ tên:
+                </td>
+                <td>
+                    @ViewBag.Name
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ngày sinh:
+                </td>
+                <td>
+                    @ViewBag.BirthOfDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email:
+                </td>
+                <td>
+                    @ViewBag.Email
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mật khẩu:
+                </td>
+                <td>
+                    @ViewBag.Password
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phòng ban:
+                </td>
+                <td>
+                    @ViewBag.Department
+                </td>
+            </tr>
+        </td>
+    </tr>
+</table>*@
+
+
+

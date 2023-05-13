@@ -1,0 +1,87 @@
+﻿@model KT0720HoHoangKha_62130808.Models.SinhVien
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    string gtinh = "";
+}
+
+<h2>Xoá</h2>
+
+<h3>Xác nhận xoá?</h3>
+<div>
+    <h4>SinhVien</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ sinh viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoSV)
+        </dd>
+
+        <dt>
+            Tên sinh viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSV)
+        </dd>
+
+        <dt>
+            Ngày sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            Giới tính
+        </dt>
+
+        <dd>
+            @{if (Model.GioiTinh == true)
+                { gtinh = "Nam"; }
+                else
+                { gtinh = "Nữ"; }
+            }
+            @gtinh
+        </dd>
+
+        <dt>
+            Ảnh sinh viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhSV)
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Lớp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lop.TenLop)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

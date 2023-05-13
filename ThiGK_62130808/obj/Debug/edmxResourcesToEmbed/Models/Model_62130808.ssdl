@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ThiGK_62130808Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DienThoai">
+    <Key>
+      <PropertyRef Name="MaDT" />
+    </Key>
+    <Property Name="MaDT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenDT" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="XuatXu" Type="bit" />
+    <Property Name="DonGia" Type="int" />
+    <Property Name="AnhDT" Type="nvarchar" MaxLength="50" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhuKienKemTheo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaLDT" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoaiDienThoai">
+    <Key>
+      <PropertyRef Name="MaLDT" />
+    </Key>
+    <Property Name="MaLDT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenLDT" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__DienThoai__MaLDT__3A81B327">
+    <End Role="LoaiDienThoai" Type="Self.LoaiDienThoai" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DienThoai" Type="Self.DienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiDienThoai">
+        <PropertyRef Name="MaLDT" />
+      </Principal>
+      <Dependent Role="DienThoai">
+        <PropertyRef Name="MaLDT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DienThoai_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TenDT" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ThiGK_62130808ModelStoreContainer">
+    <EntitySet Name="DienThoai" EntityType="Self.DienThoai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiDienThoai" EntityType="Self.LoaiDienThoai" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__DienThoai__MaLDT__3A81B327" Association="Self.FK__DienThoai__MaLDT__3A81B327">
+      <End Role="LoaiDienThoai" EntitySet="LoaiDienThoai" />
+      <End Role="DienThoai" EntitySet="DienThoai" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

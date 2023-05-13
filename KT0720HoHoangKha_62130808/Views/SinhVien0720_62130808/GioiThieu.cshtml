@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "GioiThieu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ĐẶC TẢ PHẦN MỀM</h2>
+<p>
+    Để quản lý thông tin nhân viên trong hệ thống, người ta xây dựng website theo các yêu
+    cầu gợi ý sau:
+</p>
+<ol type="a">
+    <li>
+        Thiết kế CSDL có tên QLNV_MãSV gồm 2 bảng dữ liệu sau:
+        Phòng ban (<b>Mã phòng ban</b>, Tên phòng ban)
+        Nhân viên (<b>Mã NV</b>, Họ NV, Tên NV, Giới tính, Ngày sinh, Lương, Ảnh NV, Địa chỉ, Mã phòng ban)
+    </li>
+    <li>Tạo Entity Data Model (EDM) có tên ModelQLNV_MãSV cho CSDL trên.</li>
+    <li>
+        Xây dựng các chức năng cho phép người quản trị quản lý các thông tin: Phòng ban, Nhân viên
+        (thêm, sửa, xóa và hiện thị danh sách).
+    </li>
+    <li>
+        Tìm kiếm thông tin liên quan đến nhân viên: Mã nhân viên, họ tên, giới tính, địa chỉ, phòng ban, …
+    </li>
+</ol>
+

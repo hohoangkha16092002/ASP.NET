@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ThiGK_62130808Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DienThoai">
+    <Key>
+      <PropertyRef Name="MaDT" />
+    </Key>
+    <Property Name="MaDT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="XuatXu" Type="Boolean" />
+    <Property Name="DonGia" Type="Int32" />
+    <Property Name="AnhDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhuKienKemTheo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaLDT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="LoaiDienThoai" Relationship="Self.FK__DienThoai__MaLDT__3A81B327" FromRole="DienThoai" ToRole="LoaiDienThoai" />
+  </EntityType>
+  <EntityType Name="LoaiDienThoai">
+    <Key>
+      <PropertyRef Name="MaLDT" />
+    </Key>
+    <Property Name="MaLDT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenLDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DienThoais" Relationship="Self.FK__DienThoai__MaLDT__3A81B327" FromRole="LoaiDienThoai" ToRole="DienThoai" />
+  </EntityType>
+  <Association Name="FK__DienThoai__MaLDT__3A81B327">
+    <End Role="LoaiDienThoai" Type="Self.LoaiDienThoai" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DienThoai" Type="Self.DienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiDienThoai">
+        <PropertyRef Name="MaLDT" />
+      </Principal>
+      <Dependent Role="DienThoai">
+        <PropertyRef Name="MaLDT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ThiGK_62130808Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DienThoais" EntityType="Self.DienThoai" />
+    <EntitySet Name="LoaiDienThoais" EntityType="Self.LoaiDienThoai" />
+    <AssociationSet Name="FK__DienThoai__MaLDT__3A81B327" Association="Self.FK__DienThoai__MaLDT__3A81B327">
+      <End Role="LoaiDienThoai" EntitySet="LoaiDienThoais" />
+      <End Role="DienThoai" EntitySet="DienThoais" />
+    </AssociationSet>
+    <FunctionImport Name="DienThoai_TimKiem">
+      <Parameter Name="TenDT" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

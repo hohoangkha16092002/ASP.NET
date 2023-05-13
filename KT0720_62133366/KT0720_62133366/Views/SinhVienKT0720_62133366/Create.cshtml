@@ -1,0 +1,122 @@
+﻿@model KT0720_62133366.Models.SinhVien
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Thêm mới";
+}
+
+
+<div class="w3-content w3-padding">
+    <div id="title" class="w3-container">
+        <h2>THÊM MỚI SINH VIÊN</h2>
+        <hr>
+    </div>
+    <div id="form" class="w3-content">
+        @using (Html.BeginForm("Create", "SinhVienKT0720_62133366", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div>
+                @Html.LabelFor(model => model.MaSV, "Mã nhân viên", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    <input type="text" readonly disabled class="w3-input w3-border w3-round" style="width: 60%;" value="@ViewBag.MaSV" />
+                    @Html.ValidationMessageFor(model => model.MaSV, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.HoSV, "Họ sinh viên", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    @Html.EditorFor(model => model.HoSV, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand w3-round", @style = "width: 60%;" } })
+                    @Html.ValidationMessageFor(model => model.HoSV, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.TenSV, "Tên sinh viên", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    @Html.EditorFor(model => model.TenSV, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand w3-round", @style = "width: 60%;" } })
+                    @Html.ValidationMessageFor(model => model.TenSV, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.GioiTinh, "Giới tính", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    <div class="w3-margin-left">
+                        @Html.RadioButtonFor(model => model.GioiTinh, "True", new { @checked = "checked", @class = "w3-radio w3-margin-left" })
+                        <label>Nam</label>
+                        @Html.RadioButtonFor(model => model.GioiTinh, "False", new { @class = "w3-radio w3-margin-left" })
+                        <label>Nữ</label>
+                        @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "w3-text-red" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.NgaySinh, "Ngày sinh", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand w3-round", @style = "width: 60%;" } })
+                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.DiaChi, "Địa chỉ", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand w3-round", @style = "width: 60%;" } })
+                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.AnhSV, "Ảnh nhân viên", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    <input type="file" style="width: 27%;" name="Avatar" accept="image/*" required class="w3-input w3-border w3-sand w3-round" />
+                    @Html.ValidationMessageFor(model => model.AnhSV, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.MaLop, "Lớp", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    @Html.DropDownList("MaLop", null, htmlAttributes: new { @class = "w3-sand w3-padding w3-round", @style = "width: 60%;" })
+                    @Html.ValidationMessageFor(model => model.MaLop, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <div id="submit" class="w3-container w3-center w3-padding w3-margin">
+                <input type="submit" value="Tạo" class="w3-button w3-green" onclick="hienThongBao()" />
+                <button onclick="document.getElementById('modal').style.display='block'" class="w3-button w3-red w3-margin">Hủy bỏ</button>
+            </div>
+        }
+    </div>
+    <div id="modal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom w3-light-grey">
+            <header class="w3-container w3-blue">
+                <span onclick="document.getElementById('modal').style.display='none'"
+                      class="w3-button w3-blue w3-large w3-display-topright">&times;</span>
+                <h4>Thông báo</h4>
+            </header>
+
+            <div class="w3-container w3-text-black" style="height: 100px;">
+                <h3 class="w3-padding">Bạn có thực sự muốn hủy tạo nhân viên mới?</h3>
+            </div>
+
+            <div class="w3-container w3-light-grey w3-padding">
+                <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('modal').style.display='none'">Quay lại</button>
+                @Html.ActionLink("Hủy", "Index", "", new { @class = "w3-button w3-right w3-red w3-border w3-margin-right", @style = "text-decoration: none;" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function hienThongBao() {
+        alert("Tạo mới nhân viên thành công!");
+    }
+</script>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

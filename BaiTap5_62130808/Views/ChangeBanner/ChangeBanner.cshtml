@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "ChangeBanner";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section styles
+{
+    @Styles.Render("~/Content/bootstrap.css")
+}
+
+@using (Html.BeginForm("ChangeBanner", "ChangeBanner",
+FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <h3 style="margin-left: 10px;"><b>THAY ĐỔI BANNER</b></h3>
+    <hr />
+    <div style="margin-left: auto; margin-right: auto; width: 200px; ">
+        <p style="font-weight: 700; display: inline-grid;  ">
+            Chọn ảnh làm banner: &nbsp;<input type="file"
+                                              style="height:30px;" name="banner" accept="image/*" required />
+            <input type="submit" style="height:30px;" value="Thay đổi" /><br>
+        </p>
+    </div>
+    
+}
+
+

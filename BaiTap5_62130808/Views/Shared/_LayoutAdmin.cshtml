@@ -1,0 +1,35 @@
+﻿@{
+    var path = Server.MapPath("/banner.txt");
+    var fileImage = System.IO.File.ReadAllText(path);
+    ViewBag.image = "/Images/" + fileImage;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @*    <link href="~/Content/StyleSheetAdmin.css" rel="stylesheet" />*@
+    @Styles.Render("~/Content/StyleSheetAdmin.css")
+    @RenderSection("styles", required: false)
+</head>
+<body style="margin-top:0px;">
+    <div style="display: block; width: 100%;" id="banner"><img style="margin-left: auto; margin-right: auto; " src=@ViewBag.image /></div>
+    <div id="menu">
+        <div>
+            @Html.ActionLink("TRANG CHỦ", "../Home/Default", "", htmlAttributes: new { @class = "a" }) &nbsp;|&nbsp;
+            @Html.ActionLink("ĐĂNG KÝ", "../RegisterEmp/RegisterEmp", "", htmlAttributes: new { @class = "a" })&nbsp;|&nbsp;
+            @Html.ActionLink("GỬI EMAIL", "../SendMail/SendMail", "", htmlAttributes: new { @class = "a" }) &nbsp;|&nbsp;
+            @Html.ActionLink("THAY ĐỔI BANNER", "../ChangeBanner/ChangeBanner", "", htmlAttributes: new { @class = "a" })
+            <hr style="margin-top:0px;" />
+        </div>
+    </div>
+    <div id="content">
+        @RenderBody()
+    </div>
+    <div id="footer">
+        Copyright &copy; @DateTime.Now.Year
+    </div>
+</body>
+</html>
+

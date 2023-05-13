@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ThiGK_62130808ModelStoreContainer" CdmEntityContainer="ThiGK_62130808Entities">
+    <EntitySetMapping Name="DienThoais">
+      <EntityTypeMapping TypeName="ThiGK_62130808Model.DienThoai">
+        <MappingFragment StoreEntitySet="DienThoai">
+          <ScalarProperty Name="MaDT" ColumnName="MaDT" />
+          <ScalarProperty Name="TenDT" ColumnName="TenDT" />
+          <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="AnhDT" ColumnName="AnhDT" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="PhuKienKemTheo" ColumnName="PhuKienKemTheo" />
+          <ScalarProperty Name="MaLDT" ColumnName="MaLDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiDienThoais">
+      <EntityTypeMapping TypeName="ThiGK_62130808Model.LoaiDienThoai">
+        <MappingFragment StoreEntitySet="LoaiDienThoai">
+          <ScalarProperty Name="MaLDT" ColumnName="MaLDT" />
+          <ScalarProperty Name="TenLDT" ColumnName="TenLDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DienThoai_TimKiem" FunctionName="ThiGK_62130808Model.Store.DienThoai_TimKiem" />
+  </EntityContainerMapping>
+</Mapping>

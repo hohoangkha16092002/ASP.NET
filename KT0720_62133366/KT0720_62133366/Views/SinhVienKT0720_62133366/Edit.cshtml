@@ -1,0 +1,108 @@
+﻿@model KT0720_62133366.Models.SinhVien
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Chỉnh sửa";
+}
+
+<div class="w3-padding w3-content">
+    <div id="title" class="w3-container">
+        <h2>CHỈNH SỬA SINH VIÊN</h2>
+        <hr>
+    </div>
+    <div class="w3-container">
+        @using (Html.BeginForm("Edit", "SinhVienKT0720_62133366", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "w3-text-red" })
+            @Html.HiddenFor(model => model.MaSV)
+            <div>
+                @Html.LabelFor(model => model.HoSV, "Họ sinh viên", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    @Html.EditorFor(model => model.HoSV, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand w3-round", @style = "width: 60%;" } })
+                    @Html.ValidationMessageFor(model => model.HoSV, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.TenSV, "Tên nhân viên", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    @Html.EditorFor(model => model.TenSV, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand w3-round", @style = "width: 60%;" } })
+                    @Html.ValidationMessageFor(model => model.TenSV, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.GioiTinh, "Giới tính", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    <div class="w3-margin-left">
+                        @Html.RadioButtonFor(model => model.GioiTinh, "True", new { @checked = "checked", @class = "w3-radio w3-margin-left" })
+                        <label>Nam</label>
+                        @Html.RadioButtonFor(model => model.GioiTinh, "False", new { @class = "w3-radio w3-margin-left" })
+                        <label>Nữ</label>
+                        @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "w3-text-red" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.NgaySinh, "Ngày sinh", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand w3-round", @style = "width: 60%;" } })
+                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.DiaChi, "Địa chỉ", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand w3-round", @style = "width: 60%;" } })
+                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.AnhSV, "Ảnh sinh viên", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    <input type="file" class="w3-input w3-border w3-sand w3-round" style="width: 27%;" name="Avatar" accept="image/*" required />
+                    @Html.ValidationMessageFor(model => model.AnhSV, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.MaLop, "Lớp", htmlAttributes: new { @class = "w3-text-red" })
+                <div>
+                    @Html.DropDownList("MaLop", null, htmlAttributes: new { @class = "w3-sand w3-padding w3-round", @style = "width: 60%;" })
+                    @Html.ValidationMessageFor(model => model.MaLop, "", new { @class = "w3-text-red" })
+                </div>
+            </div>
+            <div id="submit" class="w3-container w3-center w3-padding w3-margin">
+                <input type="submit" value="Lưu" class="w3-button w3-green w3-margin" />
+                <input type="button" onclick="document.getElementById('modal').style.display='block'" class="w3-button w3-red w3-margin" value="Hủy bỏ" />
+            </div>
+        }
+    </div>
+    <div id="modal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom w3-light-grey">
+            <header class="w3-container w3-blue">
+                <span onclick="document.getElementById('modal').style.display='none'"
+                      class="w3-button w3-blue w3-large w3-display-topright">&times;</span>
+                <h4>Thông báo</h4>
+            </header>
+
+            <div class="w3-container w3-text-black" style="height: 100px;">
+                <h3 class="w3-padding">Bạn có thực sự muốn hủy cập nhật?</h3>
+            </div>
+
+            <div class="w3-container w3-light-grey w3-padding">
+                <input type="button" class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('modal').style.display='none'" value="Quay lại" />
+                @Html.ActionLink("Hủy", "Index", "", new { @class = "w3-button w3-right w3-red w3-border w3-margin-right", @style = "text-decoration: none;" })
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

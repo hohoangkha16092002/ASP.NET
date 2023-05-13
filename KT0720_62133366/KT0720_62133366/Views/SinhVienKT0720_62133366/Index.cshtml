@@ -1,0 +1,85 @@
+﻿@model IEnumerable<KT0720_62133366.Models.SinhVien>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Danh sách";
+    string gender;
+    int index = 0;
+}
+
+<div class="w3-padding">
+    <div id="title" class="w3-content">
+        <h2 class="">DANH SÁCH SINH VIÊN</h2>
+        <hr />
+    </div>
+    <div class="w3-container w3-right">
+        <p>@Html.ActionLink("Thêm mới +", "Create", "", htmlAttributes: new { @class = "w3-button w3-blue" })</p>
+    </div>
+    <table id="table" class="w3-table-all w3-margin-bottom">
+        <tr>
+            <th>STT</th>
+            <th>Họ SV</th>
+            <th>Tên SV</th>
+            <th>Giới tính</th>
+            <th>Ngày sinh</th>
+            <th>Ảnh</th>
+            <th>Địa chỉ</th>
+            <th>Lớp</th>
+            <th class="w3-center">Chức năng</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @{
+                        index++;
+
+                    }
+                    @index
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoSV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSV)
+                </td>
+                <td>
+                    @{
+                        if (item.GioiTinh == true)
+                        {
+                            gender = "Nam";
+                        }
+                        else
+                        {
+                            gender = "Nữ";
+                        }
+                    }
+                    @gender
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnhSV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lop.TenLop)
+                </td>
+                <td class="w3-center">
+                    <a href="@Url.Action("Edit","SinhVienKT0720_62133366", new { id = item.MaSV })" style="text-decoration: none;">
+                        <i class="fa fa-pencil-square-o w3-text-blue w3-hover-text-gray"></i>
+                    </a>|
+                    <a href="@Url.Action("Details","SinhVienKT0720_62133366", new { id = item.MaSV })" style="text-decoration: none;">
+                        <i class="fa fa-file-text-o w3-text-yellow w3-hover-text-gray"></i>
+                    </a>|
+                    <a href="@Url.Action("Delete","SinhVienKT0720_62133366", new { id = item.MaSV })" style="text-decoration: none;">
+                        <i class="fa fa-trash w3-text-red w3-hover-text-gray"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
