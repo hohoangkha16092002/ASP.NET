@@ -220,35 +220,29 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\ModelQLNV.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelQLNV.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModelQLNV.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelQLNV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModelQLNV.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelQLNV.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\NhanVien.cs">
-      <DependentUpon>ModelQLNV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NhanVien_DS_Result.cs">
-      <DependentUpon>ModelQLNV.tt</DependentUpon>
+      <DependentUpon>QLNV.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhongBan.cs">
-      <DependentUpon>ModelQLNV.tt</DependentUpon>
+      <DependentUpon>QLNV.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLNV.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLNV.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLNV.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLNV.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLNV.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLNV.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\QuanTri.cs">
-      <DependentUpon>ModelQLNV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Table_1.cs">
-      <DependentUpon>ModelQLNV.tt</DependentUpon>
+      <DependentUpon>QLNV.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -263,15 +257,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ModelQLNV.Context.tt">
+    <Content Include="Models\QLNV.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelQLNV.edmx</DependentUpon>
-      <LastGenOutput>ModelQLNV.Context.cs</LastGenOutput>
+      <DependentUpon>QLNV.edmx</DependentUpon>
+      <LastGenOutput>QLNV.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModelQLNV.tt">
+    <Content Include="Models\QLNV.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelQLNV.edmx</DependentUpon>
-      <LastGenOutput>ModelQLNV.cs</LastGenOutput>
+      <DependentUpon>QLNV.edmx</DependentUpon>
+      <LastGenOutput>QLNV.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -280,12 +274,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\ModelQLNV.edmx">
+    <EntityDeploy Include="Models\QLNV.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelQLNV.Designer.cs</LastGenOutput>
+      <LastGenOutput>QLNV.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ModelQLNV.edmx.diagram">
-      <DependentUpon>ModelQLNV.edmx</DependentUpon>
+    <Content Include="Models\QLNV.edmx.diagram">
+      <DependentUpon>QLNV.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

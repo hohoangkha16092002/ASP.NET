@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QLNVModelStoreContainer" CdmEntityContainer="QLNVEntities">
+  <EntityContainerMapping StorageEntityContainer="QLNVModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="NhanViens">
       <EntityTypeMapping TypeName="QLNVModel.NhanVien">
         <MappingFragment StoreEntitySet="NhanVien">
@@ -24,24 +24,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="NhanVien_TimKiem" FunctionName="QLNVModel.Store.NhanVien_TimKiem" />
     <EntitySetMapping Name="QuanTris">
       <EntityTypeMapping TypeName="QLNVModel.QuanTri">
         <MappingFragment StoreEntitySet="QuanTri">
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-          <ScalarProperty Name="Admin" ColumnName="Admin" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Table_1">
-      <EntityTypeMapping TypeName="QLNVModel.Table_1">
-        <MappingFragment StoreEntitySet="Table_1">
-          <ScalarProperty Name="A2" ColumnName="A2" />
-          <ScalarProperty Name="A1" ColumnName="A1" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="NhanVien_TimKiem" FunctionName="QLNVModel.Store.NhanVien_TimKiem" />
   </EntityContainerMapping>
 </Mapping>

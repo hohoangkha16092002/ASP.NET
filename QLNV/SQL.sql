@@ -1,6 +1,8 @@
-﻿CREATE DATABASE QLNV_62130808
+﻿USE MASTER
 GO
-USE QLNV_62130808
+CREATE DATABASE QLNV
+GO
+USE QLNV
 GO
 CREATE TABLE PhongBan
 (
@@ -34,6 +36,8 @@ GO
 INSERT INTO PhongBan VALUES('KD',N'Phòng kinh doanh'),(N'KT',N'Phòng Kế toán')
 GO
 INSERT INTO QuanTri VALUES('thanhbc@ntu.edu.vn',1,N'Bùi Chí Thành','123')
+INSERT INTO QuanTri VALUES('kha.hh.62cntt@ntu.edu.vn',1,N'Hồ Hoàng Kha','123')
+INSERT INTO QuanTri VALUES('kha@ntu.edu.vn',0,N'Hồ Hoàng Kha1','123')
 GO
 INSERT NhanVien VALUES (N'KD001', N'Vũ Tiến', N'Dương', 1, CAST(N'1995-11-23' AS Date), 6100000, N'employee.png', N'Nha Trang, Khánh Hòa', N'KD')
 INSERT NhanVien VALUES (N'KD0012', N'Bùi Chí', N'Thành', 1, CAST(N'1990-01-01' AS Date), 5500000, N'employee.png', N'Nha Trang - Khánh Hòa', N'KD')
