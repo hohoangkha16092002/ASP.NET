@@ -1,0 +1,47 @@
+﻿@model KaraokeProject.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.MaTaiKhoan)
+    @Html.HiddenFor(model => model.TenDangNhap)
+    @Html.HiddenFor(model => model.TenNguoiDung)
+    @Html.HiddenFor(model => model.PhanQuyen)
+    <div class="main-wrapper login-body login_class">
+        <div class="login-wrapper">
+            <div class="container">
+                <div class="loginbox login_pswd">
+                    <div class="login-right">
+                        <div class="login-right-wrap mb-5 mt-5">
+                            <h1>Đổi mật khẩu</h1>
+                            <form action="login.html">
+                                <div class="form-group mt-5">
+                                    <label>MẬT KHẨU CŨ</label>
+                                    <input class="form-control" type="password" placeholder="Nhập mật khẩu cũ..." name="oldpass">
+                                    <span class="w3-text-red">@ViewBag.SaiMatKhau</span>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MatKhau, "MẬT KHẨU MỚI")
+                                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group mt-5">
+                                    <button class="btn btn-primary btn-block" type="submit">Đổi mật khẩu</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

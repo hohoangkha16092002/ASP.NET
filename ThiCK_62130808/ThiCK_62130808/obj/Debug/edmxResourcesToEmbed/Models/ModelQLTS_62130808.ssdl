@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ThiCK_62130808Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LOAITAISAN">
+    <Key>
+      <PropertyRef Name="MaLTS" />
+    </Key>
+    <Property Name="MaLTS" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenLTS" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TAISAN">
+    <Key>
+      <PropertyRef Name="MaTS" />
+    </Key>
+    <Property Name="MaTS" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenTS" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DVT" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="XuatXu" Type="bit" />
+    <Property Name="DonGia" Type="int" />
+    <Property Name="AnhMH" Type="varchar" MaxLength="50" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaLTS" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__TAISAN__MaLTS__440B1D61">
+    <End Role="LOAITAISAN" Type="Self.LOAITAISAN" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TAISAN" Type="Self.TAISAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAITAISAN">
+        <PropertyRef Name="MaLTS" />
+      </Principal>
+      <Dependent Role="TAISAN">
+        <PropertyRef Name="MaLTS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="TaiSan_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TenTS" Type="nvarchar" Mode="In" />
+    <Parameter Name="DonGiaFrom" Type="int" Mode="In" />
+    <Parameter Name="DonGiaTo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="TimKiemTS_62130808" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TenTS" Type="nvarchar" Mode="In" />
+    <Parameter Name="DonGiaFrom" Type="int" Mode="In" />
+    <Parameter Name="DonGiaTo" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="ThiCK_62130808ModelStoreContainer">
+    <EntitySet Name="LOAITAISAN" EntityType="Self.LOAITAISAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAISAN" EntityType="Self.TAISAN" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__TAISAN__MaLTS__440B1D61" Association="Self.FK__TAISAN__MaLTS__440B1D61">
+      <End Role="LOAITAISAN" EntitySet="LOAITAISAN" />
+      <End Role="TAISAN" EntitySet="TAISAN" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

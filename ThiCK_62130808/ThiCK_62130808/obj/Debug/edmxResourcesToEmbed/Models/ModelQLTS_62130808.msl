@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ThiCK_62130808ModelStoreContainer" CdmEntityContainer="ThiCK_62130808Entities">
+    <EntitySetMapping Name="LOAITAISANs">
+      <EntityTypeMapping TypeName="ThiCK_62130808Model.LOAITAISAN">
+        <MappingFragment StoreEntitySet="LOAITAISAN">
+          <ScalarProperty Name="MaLTS" ColumnName="MaLTS" />
+          <ScalarProperty Name="TenLTS" ColumnName="TenLTS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAISANs">
+      <EntityTypeMapping TypeName="ThiCK_62130808Model.TAISAN">
+        <MappingFragment StoreEntitySet="TAISAN">
+          <ScalarProperty Name="MaTS" ColumnName="MaTS" />
+          <ScalarProperty Name="TenTS" ColumnName="TenTS" />
+          <ScalarProperty Name="DVT" ColumnName="DVT" />
+          <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="AnhMH" ColumnName="AnhMH" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="MaLTS" ColumnName="MaLTS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="TaiSan_TimKiem" FunctionName="ThiCK_62130808Model.Store.TaiSan_TimKiem" />
+  </EntityContainerMapping>
+</Mapping>
